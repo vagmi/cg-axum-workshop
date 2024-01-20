@@ -1,18 +1,14 @@
-pub fn greet(name: &str) -> String { 
-    format!("Hello, {}!", name)
+pub async fn greet() -> String { 
+    "hello world".to_string() 
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
 
-    #[test]
-    fn test_greet() {
-        assert_eq!(greet("chennai geeks"), "Hello, chennai geeks!");
-    }
-
-    #[test]
-    fn test_greet2() {
-        assert_eq!(greet("world"), "Hello, world!");
+    #[tokio::test]
+    async fn test_greet() {
+        assert_eq!(greet().await, "hello world");
     }
 }
+
