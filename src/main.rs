@@ -1,8 +1,7 @@
-mod greeting {
-    pub fn greet(name: &str) {
-        println!("Hello, {}!", name);
-    }
-}
+mod greeting;
+
+use greeting::greet;
+
 fn main() {
-    greeting::greet("chennai geeks");
+    println!("{}", greet("chennai geeks"));
 }
