@@ -1,7 +1,7 @@
 use axum::extract::Path;
 
-pub async fn greet(Path(name): Path<String>) -> String { 
-    format!("hello {}", name)
+pub async fn greet(Path((greeting, nom)): Path<(String, String)>) -> String { 
+    format!("{}, {}", greeting, nom)
 }
 
 #[cfg(test)]
@@ -11,9 +11,9 @@ mod tests {
 
     #[tokio::test]
     async fn test_greet() {
-        assert_eq!(
-            greet(Path("chennai geeks".to_string())).await, 
-            "hello chennai geeks");
+        let greeting = Path(("hello".to_string(), "chennai".to_string()));
+        assert_eq!(greet(greeting).await, "hello, chennai");
+            
     }
 }
 
