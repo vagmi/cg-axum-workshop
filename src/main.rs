@@ -2,6 +2,9 @@ mod greeting;
 
 use greeting::greet;
 
-fn main() {
+#[tokio::main]
+async fn main() {
     println!("{}", greet("chennai geeks"));
 }
+
+
